@@ -1,12 +1,29 @@
-import { Button, Divider, Form, Input } from 'antd';
+import { Button, Divider, Form, Input, message } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleIcon from '../assets/icons/icons8-google.svg';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import './SignupPage.css'; // Assuming your CSS file is here
+import { signUp } from '../auth';
+import { useNavigate } from 'react-router-dom';
+
 
 const SignupPage = () => {
+  const navigate = useNavigate();
+
+  const onFinish = async (values) => {
+    const { email, phone, password } = values; // Destructure values
+    
+    try {
+      await signUp(email, phone, password); // Call signUp with destructured values
+      message.success('Sign up successful, please check your email for the confirmation code.');
+      navigate('/confirmSignup')
+    } catch (error) {
+      message.error(`Error while signing up: ${error.message}`); // Display specific error
+    }
+  };
+
   return (
     <>
       <div className='flex justify-evenly min-h-screen w-full'>
@@ -16,7 +33,7 @@ const SignupPage = () => {
             Already have an account?{' '}
             <Link to="/signin" className='underline text-blue-700'>Sign in</Link>
           </p>
-          <Form layout='vertical' requiredMark={false}>
+          <Form layout='vertical' requiredMark={false} onFinish={onFinish}>
             <Form.Item name="email" label="Email" rules={[{ required: true, message: 'Please input your email' }]}>
               <Input placeholder='Email' />
             </Form.Item>

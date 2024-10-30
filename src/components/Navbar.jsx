@@ -6,7 +6,7 @@ const Navbar = () => (
     <div className="container mx-auto flex justify-between items-center text-white">
       <h1 className="text-2xl font-bold">PromptlyAI</h1>
       <div className="flex space-x-6">
-        <Link to="/" className="hover:text-blue-300">Blogs</Link>
+        <Link to="/blogs" className="hover:text-blue-300">Blogs</Link>
         <Link to="/about" className="hover:text-blue-300">About</Link>
         <Link to="/about" className="hover:text-blue-300">Pricing</Link>
         <Link to="/contact" className="hover:text-blue-300">Contact</Link>
