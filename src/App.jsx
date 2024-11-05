@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ConfirmSignUpPage from './pages/ConfirmSignUpPage';
 import BlogsPage from './pages/BlogsPage';
+import BlogGeneratorPage from './pages/BlogGeneratorPage';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path='/signup' element={<SignupPage />}/>
         <Route path='/confirmSignup' element={<ConfirmSignUpPage />}/>
         <Route path='/blogs' element={<BlogsPage />}/>
-        {/* Add more routes as necessary */}
+        <Route path='/aiwriter' element={<BlogGeneratorPage></BlogGeneratorPage>}/>
       </Routes>
     </Router>
   );
